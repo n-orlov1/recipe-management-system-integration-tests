@@ -10,8 +10,15 @@ repositories {
 }
 
 dependencies {
+    testImplementation 'io.rest-assured:rest-assured:5.4.0'
     testImplementation platform('org.junit:junit-bom:5.10.0')
     testImplementation 'org.junit.jupiter:junit-jupiter'
+    testImplementation 'com.fasterxml.jackson.core:jackson-databind:2.17.1'
+    testImplementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.12.5'
+    compileOnly 'org.projectlombok:lombok:1.18.22'
+    testCompileOnly 'org.projectlombok:lombok:1.18.22'
+    annotationProcessor 'org.projectlombok:lombok:1.18.22'
+    testAnnotationProcessor('org.projectlombok:lombok:1.18.22')
 }
 
 test {
