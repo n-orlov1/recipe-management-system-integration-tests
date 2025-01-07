@@ -12,8 +12,8 @@ public class DatabaseUtils {
                 .getConnection("jdbc:postgresql://localhost:5432/recipe_dev","recipe_dev_user","recipe_dev_user")) {
 
             Statement statement = pgConnection.createStatement();
-            statement.execute("DELETE from public.\"user\" where email = 'test@test.com' " +
-                    "or email = 'тестовый_пользователь@маил.ру'");
+            statement.execute("DELETE from public.\"user\" where email in ('test@test.com','тестовый_пользователь@маил.ру')");
+
         } catch (SQLException e) {
             e.printStackTrace();
         }

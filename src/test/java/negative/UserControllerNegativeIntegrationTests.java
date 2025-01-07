@@ -25,4 +25,38 @@ public class UserControllerNegativeIntegrationTests {
         then()
                 .statusCode(400);
     }
+
+    @Test
+    public void Should_FailToRegisterNewUser_WhenPasswordIsBlank() {
+
+        User newUser = new User();
+        newUser.setEmail("testuser@test.com");
+        newUser.setPassword("");
+
+        given()
+                .contentType(ContentType.JSON)
+                .body(newUser).
+        when()
+                .post(URL + "/api/register").
+        then()
+                .statusCode(400);
+
+    }
+
+    @Test
+    public void Should_FailToRegisterNewUser_WhenPasswordLengthIsLessThanEightCharacters() {
+
+        User newUser = new User();
+        newUser.setEmail("testuser@test.com");
+        newUser.setPassword("testpas");
+
+        given()
+                .contentType(ContentType.JSON)
+                .body(newUser).
+        when()
+                .post(URL + "/api/register").
+        then()
+                .statusCode(400);
+
+    }
 }
