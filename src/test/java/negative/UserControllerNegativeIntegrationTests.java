@@ -59,4 +59,21 @@ public class UserControllerNegativeIntegrationTests {
                 .statusCode(400);
 
     }
+
+    @Test
+    public void Should_FailToRegisterNewUser_WhenEmailIsNotCorrectAndStartsWithDot() {
+
+        User newUser = new User();
+        newUser.setEmail(".testuser@test.com");
+        newUser.setPassword("superstrongpassword");
+
+        given()
+                .contentType(ContentType.JSON)
+                .body(newUser).
+        when()
+                .post(URL + "/api/register").
+        then()
+                .statusCode(400);
+
+    }
 }
